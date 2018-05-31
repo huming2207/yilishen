@@ -78,7 +78,7 @@ std::map<unsigned long long, Device> Prober::discoverDevices()
              "HOST: %s:%d\r\n"
              "ST: %s\r\n"
              "MAN: \"ssdp:discover\"\r\n",
-             "239.255.255.250", 1900, BULB_SEARCH_TARGET);
+             "239.255.255.250", 1982, BULB_SEARCH_TARGET);
     printf("Query:\n%s", search);
 
     // Send multicast package
