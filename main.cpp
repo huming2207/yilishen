@@ -1,7 +1,7 @@
 #include <iostream>
 #include "src/Prober.h"
 
-int main()
+int main(int argc, char** argv)
 {
     Prober prober;
 

@@ -128,7 +128,7 @@ void Prober::parseSsdpResponse(char *buffer)
         value.erase(value.length() - 1);
 
         // Do a long if-else...(probably there's a better way to do this?)
-        if(key == "Location") device.location = value;
+        if(key == "Location") device.location = value.erase(0, 11).erase(value.length() - 6); // Remove "yeelight://"
         else if(key == "model") device.model = value;
         else if(key == "fw_ver") device.fw_ver = value;
         else if(key == "power") device.power = (value == "on");
