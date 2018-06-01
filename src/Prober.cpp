@@ -79,7 +79,6 @@ std::map<unsigned long long, Device> Prober::discoverDevices()
              "ST: %s\r\n"
              "MAN: \"ssdp:discover\"\r\n",
              "239.255.255.250", 1982, BULB_SEARCH_TARGET);
-    printf("Query:\n%s", search);
 
     // Send multicast package
     if(sendto(udpSocket, search, SSDP_PACKET_BUFFER, 0, (struct sockaddr*)&groupSock, sizeof(groupSock)) == -1) {
@@ -98,9 +97,6 @@ std::map<unsigned long long, Device> Prober::discoverDevices()
 
         // HTTP/1.1's are responses. NOTIFY are random broadcasts
         if (strstr(buffer, "HTTP/1.1 200 OK") != nullptr) {
-            printf("------------------\n");
-            printf("Got response:\n");
-            printf("%s\n", buffer);
             parseSsdpResponse(buffer);
             device_count++;
 
