@@ -23,6 +23,7 @@
 #include <sys/time.h>
 #include <ctime>
 #include <cerrno>
+#include <zconf.h>
 
 #include "Prober.h"
 
@@ -45,9 +46,9 @@ std::map<unsigned long long, Device> Prober::discoverDevices()
     int reuse = 1;
     setsockopt(udpSocket, SOL_SOCKET, SO_REUSEADDR, (char*)&reuse, sizeof(reuse));
 
-    // 100ms second timeout on recvfrom
+    // 3 seconds timeout on recvfrom
     struct timeval tv{};
-    tv.tv_sec = 1;
+    tv.tv_sec = 3;
     tv.tv_usec = 0;
     setsockopt(udpSocket, SOL_SOCKET, SO_RCVTIMEO, (char*)&tv, sizeof(tv));
     char loopch = 0;
@@ -105,8 +106,7 @@ std::map<unsigned long long, Device> Prober::discoverDevices()
         }
     }
 
-    shutdown(udpSocket, 0);
-
+    close(udpSocket);
     return this->deviceList;
 }
 
