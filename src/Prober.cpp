@@ -23,7 +23,7 @@
 #include <sys/time.h>
 #include <ctime>
 #include <cerrno>
-#include <zconf.h>
+#include <unistd.h>
 
 #include "Prober.h"
 
