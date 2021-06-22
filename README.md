@@ -36,7 +36,7 @@ Yilishen <command>  [arg1] [arg2] [arg3] ... [argN]
 
 Please refer to [Yeelight WiFi Light Inter-Operation Specification](https://www.yeelight.com/download/Yeelight_Inter-Operation_Spec.pdf) for more details
 
-Output when running `./Yilishen toggle`:
+Chandge state LED Lamp to reverse `./Yilishen toggle`:
 
 ```
 Found a device at 192.168.2.122, ID: 3330
@@ -49,5 +49,20 @@ Found a device at 192.168.2.145, ID: 3331
 Sending command toggle to this device...
 Got result: {"id":9527, "result":["ok"]}
 ```
+
+On Led Lamp `./Yilishen set_power on smooth 1000`:
+
+```
+Found a device at 192.168.2.122, ID: 3330
+Sending command toggle to this device...
+Got result: {"id":9527, "result":["ok"]}
+
+
+
+Found a device at 192.168.2.145, ID: 3331
+Sending command toggle to this device...
+Got result: {"id":9527, "result":["ok"]}
+```
+
 
 ...and the light bulb will be turn on (if not on) or turn off (if it has been turned on).

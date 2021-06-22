@@ -82,8 +82,13 @@ std::string Command::generateCommand(std::string& method, std::vector<std::strin
     Value array(rapidjson::kArrayType);
 
     if(values.size() > 2) {
+        int i = 0;
         for(auto const& value : values) {
-
+            // ignore name app and metod
+            if (i <= 1) {  
+                i++;
+                continue;
+            }
             // Try parse to int first. If no integer found, then just add as string
             try {
                 int possibleDigit = std::stoi(value);
